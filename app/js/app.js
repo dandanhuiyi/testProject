@@ -28,7 +28,7 @@ var App = angular.module('angle', [
     'ui.utils'
   ]);
 
-App.run(["$rootScope", "$state", "$stateParams",  '$window', '$templateCache', '$cookies',function ($rootScope, $state, $stateParams, $window, $templateCache,$cookies) {
+App.run(["$rootScope", "$state", "$stateParams",  '$window', '$templateCache', '$cookieStore',function ($rootScope, $state, $stateParams, $window, $templateCache,$cookieStore) {
   // Set reference to access them from any scope
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
@@ -36,10 +36,10 @@ App.run(["$rootScope", "$state", "$stateParams",  '$window', '$templateCache', '
 
 
   //$rootScope.serviceUrl = "http://voll588.imwork.net:15296/NJService/api/admin";
-  //$rootScope.serviceUrl = "http://192.168.1.129:8080/NJService/api/admin";
-  $rootScope.serviceUrl = "http://voll588.imwork.net:29860/NJService/api/admin";
-    //$rootScope.serviceUrl = "http://172.16.2.107:8080/NJService/api/admin";
-
+  //$rootScope.serviceUrl = "http://192.168.1.105:8080/NJService/api/admin";
+  $rootScope.serviceUrl = "http://voll588.imwork.net:32635/NJService/api/admin";
+    // $rootScope.serviceUrl = "http://172.16.2.107:8080/NJService/api/admin";
+    $rootScope.imaUrl="http://voll588.imwork.net:32635/NJService/";
     // Scope Globals
     // ----------------------------------- 
     $rootScope.app = {
@@ -82,6 +82,14 @@ App.run(["$rootScope", "$state", "$stateParams",  '$window', '$templateCache', '
         }
 
         return strMsg;
+    };
+
+    $rootScope.checkUser=function(){
+
+        $rootScope.loginUser = $cookieStore.get('loginUser');
+        if(!$rootScope.loginUser) {
+            $state.go("login");
+        }
     };
 
 
@@ -133,24 +141,26 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
     .state('app.adminList',{
         url:'/admin',
         title:"Admin",
-        templateUrl:helper.basepath('user/adminList.html'),
+        templateUrl:helper.basepath('admin/adminList.html'),
         resolve: helper.resolveFor('xeditable','loaders.css')
+      })
+      .state('app.adminAdd',{
+          url:'/admin/add',
+          title:"Admin",
+          templateUrl:helper.basepath('admin/adminAdd.html'),
+          resolve: helper.resolveFor('loaders.css','ui.select')
       })
       .state('app.studentList',{
           url:'/student',
           title:'Student',
           templateUrl:helper.basepath('student/studentList.html'),
-          resolve: helper.resolveFor('xeditable')
+          resolve: helper.resolveFor('xeditable','ngDialog','loaders.css','ui.select')
       })
       .state('app.stuentDetail',{
-          url:'/student/detail/{stuId}',
+          url:'/student/detail/opType/{opType}/stu/{stuId}',
           title:'student.detail',
-          templateUrl:helper.basepath('student/studentDetail.html')
-      })
-      .state('app.studentAdd',{
-          url:'/student/add',
-          title:'student.add',
-          templateUrl:helper.basepath('student/studentAdd.html')
+          templateUrl:helper.basepath('student/studentDetail.html'),
+          resolve: helper.resolveFor('loaders.css','ui.select')
       })
       .state('app.classList',{
           url:'/class',
@@ -158,13 +168,25 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
           templateUrl:helper.basepath('class/classList.html'),
           resolve: helper.resolveFor('xeditable')
       })
+      .state('app.classAdd',{
+          url:'/class/add',
+          title:'class',
+          templateUrl:helper.basepath('class/classAdd.html'),
+          resolve: helper.resolveFor('loaders.css','ui.select')
+      })
+      .state('app.classEdit',{
+          url:'/class/edit/{claName}',
+          title:'class',
+          templateUrl:helper.basepath('class/classEdit.html'),
+          resolve: helper.resolveFor('loaders.css','ui.select')
+      })
       .state('app.teacherList',{
           url:'/teacher',
           title:'teacher',
           templateUrl:helper.basepath('teacher/teacherList.html')
       })
       .state('app.teacherEdit',{
-          url:'/teacher/edit/{teacherId}',
+          url:'/teacher/edit/{teacherId}/',
           title:'teacher detail',
           templateUrl:helper.basepath('teacher/teacherEdit.html'),
           resolve: helper.resolveFor('ngImgCrop', 'filestyle')
@@ -174,6 +196,16 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
           title:'teacher add',
           templateUrl:helper.basepath('teacher/teacherAdd.html'),
           resolve: helper.resolveFor('ngImgCrop', 'filestyle')
+      })
+      .state('app.noticeList',{
+          url:'/notice',
+          title:'notice',
+          templateUrl:helper.basepath('notice/noticeList.html')
+      })
+      .state('app.noticeAdd',{
+          url:'/notice/add',
+          title:'notice add',
+          templateUrl:helper.basepath('notice/noticeAdd.html')
       })
 
     // 
@@ -285,10 +317,10 @@ App
       /*{name: 'ngDialog',                  files: ['vendor/ngDialog/js/ngDialog.min.js',
                                                   'vendor/ngDialog/css/ngDialog.min.css',
                                                   'vendor/ngDialog/css/ngDialog-theme-default.min.css'] }*/
-        {name: 'xeditable', files: ['vendor/angular-xeditable/dist/js/xeditable.js',
-                                 'vendor/angular-xeditable/dist/css/xeditable.css']},
-        {name: 'ngImgCrop',files: ['vendor/ng-img-crop/compile/unminified/ng-img-crop.js',
-                                'vendor/ng-img-crop/compile/unminified/ng-img-crop.css']}
+        {name: 'xeditable', files: ['vendor/angular-xeditable/dist/js/xeditable.js', 'vendor/angular-xeditable/dist/css/xeditable.css']},
+        {name: 'ngImgCrop',files: ['vendor/ng-img-crop/compile/unminified/ng-img-crop.js','vendor/ng-img-crop/compile/unminified/ng-img-crop.css']},
+        {name: 'ngDialog', files: ['vendor/ngDialog/js/ngDialog.min.js', 'vendor/ngDialog/css/ngDialog.min.css','vendor/ngDialog/css/ngDialog-theme-default.min.css'] },
+        {name: 'ui.select',files: ['vendor/angular-ui-select/dist/select.js','vendor/angular-ui-select/dist/select.css']}
     ]
 
 

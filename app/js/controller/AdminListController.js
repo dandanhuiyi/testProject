@@ -5,7 +5,7 @@
 App.controller("AdminListController",['$rootScope','$scope','$filter','$http','$cookieStore','Notify','$state',function($rootScope,$scope,$filter,$http,$cookieStore,Notify,$state){
 
 
-    ///*  TestCode
+    /*  TestCode
     var adminTable = [{
         "adminId": 860,
         "adminUserName": "Superman",
@@ -65,18 +65,15 @@ App.controller("AdminListController",['$rootScope','$scope','$filter','$http','$
     }
     ];
     $scope.adminList = adminTable;
-    return;
-    //*/
+
+    */
 
 
 
     $scope.isLoading = true;
 
-    $scope.loginUser = $cookieStore.get('loginUser');
+    $rootScope.checkUser();
 
-    if(!$scope.loginUser) {
-        $state.go("login");
-    }
     $scope.editRowVisible = false;
     //显示编辑状态
     $scope.showEditRow=function(e){
@@ -131,8 +128,8 @@ App.controller("AdminListController",['$rootScope','$scope','$filter','$http','$
             method: 'POST',
             url: $scope.serviceUrl + '/adminMge',
             params: {
-                adminId: $scope.loginUser.adminId,
-                adminRoleId: $scope.loginUser.adminRoleId,
+                adminId: $rootScope.loginUser.adminId,
+                adminRoleId: $rootScope.loginUser.adminRoleId,
                 adminEntity: admin,
                 opType: 'update'
             }
@@ -171,8 +168,8 @@ App.controller("AdminListController",['$rootScope','$scope','$filter','$http','$
                 method: 'POST',
                 url: $scope.serviceUrl+'/adminMge',
                 params: {
-                    adminId: $scope.loginUser.adminId,
-                    adminRoleId: $scope.loginUser.adminRoleId,
+                    adminId: $rootScope.loginUser.adminId,
+                    adminRoleId: $rootScope.loginUser.adminRoleId,
                     adminEntity: $scope.newAdmin,
                     opType: 'add'
                 }
@@ -210,6 +207,11 @@ App.controller("AdminListController",['$rootScope','$scope','$filter','$http','$
         }
     };
 
+    //新增
+    $scope.addAdmin=function(){
+        $state.go('app.adminAdd');
+    };
+
     //删除
     $scope.removePerson=function(admin) {
 
@@ -219,8 +221,8 @@ App.controller("AdminListController",['$rootScope','$scope','$filter','$http','$
             method: 'POST',
             url: $scope.serviceUrl + '/adminMge',
             params: {
-                adminId: $scope.loginUser.adminId,
-                adminRoleId: $scope.loginUser.adminRoleId,
+                adminId: $rootScope.loginUser.adminId,
+                adminRoleId: $rootScope.loginUser.adminRoleId,
                 adminEntity: admin,
                 opType: 'del'
             }
@@ -258,7 +260,7 @@ App.controller("AdminListController",['$rootScope','$scope','$filter','$http','$
             method: 'POST',
             url: $scope.serviceUrl+'/adminList',
             params: {
-                adminId: $scope.loginUser.adminId
+                adminId: $rootScope.loginUser.adminId
             }
         })
             .success(
@@ -271,8 +273,7 @@ App.controller("AdminListController",['$rootScope','$scope','$filter','$http','$
             .error(
                 function(e){
                     alert(e);
-                    //$scope.newAdmin='';
-                    //$scope.roleSelected='';
+                    $scope.isLoading =false;
                 });
     };
 

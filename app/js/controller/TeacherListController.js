@@ -3,8 +3,16 @@
  */
 App.controller("TeacherListController",['$rootScope','$scope','$filter','$http','$cookieStore','$state',function($rootScope,$scope,$filter,$http,$cookieStore,$state){
 
-    ///*  TestCode
+    $rootScope.checkUser();
+
+    $scope.serviceUrl = $rootScope.serviceUrl + '/teacherList';
+
+    $scope.teacherList={};
+
+    /*  TestCode
     $scope.isLoading=false;
+
+    $rootScope.imaUrl ='';
 
     var teachers=[
         {
@@ -80,12 +88,48 @@ App.controller("TeacherListController",['$rootScope','$scope','$filter','$http',
     ];
 
     $scope.teacherList=teachers;
-    //*/
+    */
 
+
+    $scope.initList=function() {
+        $http({
+            header: {token: $rootScope.loginUser.token},
+            method: 'POST',
+            url: $scope.serviceUrl,
+            params: {
+                adminId: $rootScope.loginUser.adminId
+            }
+        })
+            .success(
+                function (response) {
+                    if (response && response.code == 0) {
+                        $scope.teacherList = response.list;
+                        $scope.isLoading = false;
+                    }
+                })
+            .error(
+                function (e) {
+                    alert(e);
+                });
+    };
+
+    $scope.isLoading=true;
+
+    $scope.initList();
 
     $scope.showTehDetail=function(teacherId){
         return $state.go('app.teacherEdit',{teacherId:teacherId});
+    };
+
+
+    $scope.delTeacher=function(){
+      alert('删除');
+    };
+
+    $scope.addStud=function(){
+        $state.go('app.teacherAdd');
     }
+
 
 
 

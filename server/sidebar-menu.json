@@ -14,10 +14,6 @@
       { "menu_id": 21,
         "text": "学生信息管理",
         "sref": "app.studentList"
-      },
-      { "menu_id": 22,
-        "text": "新增学生信息",
-        "sref": "app.studentAdd"
       }
     ]
   },
@@ -105,7 +101,11 @@
     "submenu": [
       { "menu_id": 71,
         "text": "通知信息管理",
-        "sref": "app.submenu"
+        "sref": "app.noticeList"
+      },
+      { "menu_id": 72,
+        "text": "发送通知",
+        "sref": "app.noticeAdd"
       }
     ]
   },

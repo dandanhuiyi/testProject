@@ -11,9 +11,9 @@ App.controller('LoginFormController', ['$rootScope','$scope', '$http', '$state',
     //$rootScope.loginUser=[];
     ///*  TestCode
 
-    $cookieStore.put('loginUser', {adminId:1,adminRoleId:1,token:'a'});
-    $state.go('app.dashboard');
-    return;
+    //$cookieStore.put('loginUser', {adminId:1,adminRoleId:1,nickName:'Admin',token:'a'});
+    //$state.go('app.dashboard');
+    //return;
     //*/
 
     // bind here all data from the form
@@ -34,16 +34,10 @@ App.controller('LoginFormController', ['$rootScope','$scope', '$http', '$state',
                     // assumes if ok, response is an object with some data, if not, a string with error
                     // customize according to your api
                     if (response && response.code == 0) {
-                        //$rootScope.loginUser.adminId = response.adminId;
-                        //$rootScope.loginUser.nickName = response.nickName;
-                        //$rootScope.loginUser.roleId = response.roleId;
-                        //$rootScope.loginUser.roleList = response.roleList;
-                        //$rootScope.loginUser.token = response.token;
-
                         //var expireDate = new Date();
                         //expireDate.setDate(expireDate.getHours()+8);
                         //$cookieStore.put('loginCookie',$scope.loginUser,{'expires': expireDate});
-                        $cookieStore.put('loginUser', {adminId:response.adminId,adminRoleId:response.roleId,token:'a'});
+                        $cookieStore.put('loginUser', {adminId:response.adminId,nickName:response.nickName,adminRoleId:response.roleId,token:response.token});
                         $state.go('app.dashboard');
                     }
                     else {
@@ -52,8 +46,8 @@ App.controller('LoginFormController', ['$rootScope','$scope', '$http', '$state',
                 })
                 .error(function (x) {
                     $scope.authMsg = '服务请求失败,请稍后再试.';
-                    //$cookieStore.put('loginUser',{name:'a',id:2});
-                    //var tsc =  $cookieStore.get('loginUser');
+                    //$cookieStore.put('loginUser', {adminId:'MQ==',nickName:'Admin',adminRoleId:1,token:'HSUEBA3-3ERWDVJXA-RWVDXX-R3CDS'});
+                    //$state.go('app.dashboard');
                 });
         }
         else {
