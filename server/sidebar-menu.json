@@ -18,18 +18,6 @@
     ]
   },
   {
-    "menu_id": 3,
-    "text": "家长信息管理",
-    "sref": "#",
-    "icon": "icon-folder",
-    "submenu": [
-      { "menu_id": 31,
-        "text": "家长信息管理",
-        "sref": "app.submenu"
-      }
-    ]
-  },
-  {
     "menu_id": 9,
     "text": "老师信息管理",
     "sref": "#",
@@ -54,14 +42,14 @@
     ]
   },
   {
-    "menu_id": 4,
-    "text": "教学管理",
+    "menu_id": 10,
+    "text": "兴趣班管理",
     "sref": "#",
     "icon": "icon-folder",
     "submenu": [
-      { "menu_id": 41,
-        "text": "教学信息管理",
-        "sref": "app.submenu"
+      { "menu_id": 91,
+        "text": "兴趣班信息",
+        "sref": "app.interestList"
       }
     ]
   },
@@ -73,7 +61,7 @@
     "submenu": [
       { "menu_id": 51,
         "text": "设备信息管理",
-        "sref": "app.submenu"
+        "sref": "app.devicesList"
       }
     ]
   },
@@ -85,7 +73,7 @@
     "submenu": [
       { "menu_id": 61,
         "text": "收费管理",
-        "sref": "app.submenu"
+        "sref": "app.feeList"
       }
     ]
   },
@@ -98,10 +86,18 @@
       { "menu_id": 71,
         "text": "通知信息管理",
         "sref": "app.noticeList"
-      },
-      { "menu_id": 72,
-        "text": "发送通知",
-        "sref": "app.noticeAdd"
+      }
+    ]
+  },
+  {
+    "menu_id": 4,
+    "text": "意见建议",
+    "sref": "#",
+    "icon": "icon-folder",
+    "submenu": [
+      { "menu_id": 41,
+        "text": "建议信息管理",
+        "sref": "app.adviceList"
       }
     ]
   },

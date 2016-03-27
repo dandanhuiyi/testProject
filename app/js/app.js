@@ -35,11 +35,11 @@ App.run(["$rootScope", "$state", "$stateParams",  '$window', '$templateCache', '
   $rootScope.$storage = $window.localStorage;
 
 
-  //$rootScope.serviceUrl = "http://voll588.imwork.net:15296/NJService/api/admin";
-  //$rootScope.serviceUrl = "http://192.168.1.105:8080/NJService/api/admin";
-  $rootScope.serviceUrl = "http://voll588.imwork.net:32635/NJService/api/admin";
-    // $rootScope.serviceUrl = "http://172.16.2.107:8080/NJService/api/admin";
+
+    //$rootScope.serviceUrl = "http://192.168.1.105:8080/NJService/api/admin";
+    $rootScope.serviceUrl = "http://voll588.imwork.net:32635/NJService/api/admin";
     $rootScope.imaUrl="http://voll588.imwork.net:32635/NJService/";
+    //$rootScope.imaUrl="http://192.168.1.105:8080/NJService/";
     // Scope Globals
     // ----------------------------------- 
     $rootScope.app = {
@@ -190,23 +190,79 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
           url:'/teacher/edit/{teacherName}/',
           title:'teacher detail',
           templateUrl:helper.basepath('teacher/teacherEdit.html'),
-          resolve: helper.resolveFor('ngImgCrop', 'filestyle','loaders.css')
+          resolve: helper.resolveFor('ngImgCrop', 'filestyle','loaders.css','angularFileUpload')
       })
       .state('app.teacherAdd',{
           url:'/teacher/add',
           title:'teacher add',
           templateUrl:helper.basepath('teacher/teacherAdd.html'),
-          resolve: helper.resolveFor('ngImgCrop', 'filestyle','loaders.css')
+          resolve: helper.resolveFor('ngImgCrop', 'filestyle','loaders.css','angularFileUpload')
       })
       .state('app.noticeList',{
           url:'/notice',
           title:'notice',
-          templateUrl:helper.basepath('notice/noticeList.html')
+          templateUrl:helper.basepath('notice/noticeList.html'),
+          resolve: helper.resolveFor('loaders.css')
       })
       .state('app.noticeAdd',{
           url:'/notice/add',
           title:'notice add',
-          templateUrl:helper.basepath('notice/noticeAdd.html')
+          templateUrl:helper.basepath('notice/noticeAdd.html'),
+          resolve: helper.resolveFor('ui.select','loaders.css')
+      })
+      .state('app.interestList',{
+          url:'/interest',
+          title:'interest',
+          templateUrl:helper.basepath('interest/interestList.html'),
+          resolve: helper.resolveFor('ngDialog','loaders.css')
+      })
+      .state('app.interestAdd',{
+          url:'/interest/add',
+          title:'interest',
+          templateUrl:helper.basepath('interest/interestAdd.html'),
+          resolve: helper.resolveFor('filestyle','loaders.css','angularFileUpload','ui.select')
+      })
+      .state('app.interestEdit',{
+          url:'/interest/edit/{interestName}',
+          title:'interest',
+          templateUrl:helper.basepath('interest/interestEdit.html'),
+          resolve: helper.resolveFor('filestyle','loaders.css','angularFileUpload','ui.select')
+      })
+      .state('app.devicesList',{
+          url:'/devices',
+          title:'devices',
+          templateUrl:helper.basepath('devices/devicesList.html'),
+          resolve: helper.resolveFor('loaders.css')
+      })
+      .state('app.devicesAdd',{
+          url:'/devices/Add',
+          title:'devices',
+          templateUrl:helper.basepath('devices/devicesAdd.html'),
+          resolve: helper.resolveFor('loaders.css','angularFileUpload','filestyle')
+      })
+      .state('app.feeList',{
+          url:'/fee',
+          title:'fee',
+          templateUrl:helper.basepath('fee/feeList.html'),
+          resolve: helper.resolveFor('loaders.css')
+      })
+      .state('app.feeAdd',{
+          url:'/fee/add',
+          title:'fee',
+          templateUrl:helper.basepath('fee/feeAdd.html'),
+          resolve: helper.resolveFor('loaders.css','angularFileUpload','filestyle')
+      })
+      .state('app.feeEdit',{
+          url:'/fee/edit/{feeId}',
+          title:'fee',
+          templateUrl:helper.basepath('fee/feeEdit.html'),
+          resolve: helper.resolveFor('loaders.css','angularFileUpload','filestyle')
+      })
+      .state('app.adviceList',{
+          url:'/advice',
+          title:'advice',
+          templateUrl:helper.basepath('advice/adviceList.html'),
+          resolve: helper.resolveFor('loaders.css')
       })
 
     // 
@@ -319,6 +375,7 @@ App
                                                   'vendor/ngDialog/css/ngDialog.min.css',
                                                   'vendor/ngDialog/css/ngDialog-theme-default.min.css'] }*/
         {name: 'xeditable', files: ['vendor/angular-xeditable/dist/js/xeditable.js', 'vendor/angular-xeditable/dist/css/xeditable.css']},
+        {name: 'angularFileUpload',files: ['vendor/angular-file-upload/angular-file-upload.js']},
         {name: 'ngImgCrop',files: ['vendor/ng-img-crop/compile/unminified/ng-img-crop.js','vendor/ng-img-crop/compile/unminified/ng-img-crop.css']},
         {name: 'ngDialog', files: ['vendor/ngDialog/js/ngDialog.min.js', 'vendor/ngDialog/css/ngDialog.min.css','vendor/ngDialog/css/ngDialog-theme-default.min.css'] },
         {name: 'ui.select',files: ['vendor/angular-ui-select/dist/select.js','vendor/angular-ui-select/dist/select.css']}

@@ -8,13 +8,6 @@
 
 App.controller('LoginFormController', ['$rootScope','$scope', '$http', '$state', '$cookieStore','$cookies',function($rootScope,$scope, $http, $state, $cookieStore,$cookies) {
 
-    //$rootScope.loginUser=[];
-    ///*  TestCode
-
-    //$cookieStore.put('loginUser', {adminId:1,adminRoleId:1,nickName:'Admin',token:'a'});
-    //$state.go('app.dashboard');
-    //return;
-    //*/
 
     // bind here all data from the form
     $scope.account = {};
