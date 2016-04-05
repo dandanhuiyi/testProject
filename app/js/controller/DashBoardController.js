@@ -7,9 +7,9 @@ App.controller("DashBoardController",['$rootScope','$scope','$filter','$http','$
 
     $scope.isLoading = true;
     $http({
-        //headers: {token: $rootScope.loginUser.token},
         method: 'POST',
         url: $scope.serviceUrl + '/landingInfo',
+        headers: {'token': $rootScope.loginUser.token},
         params: { adminId: $rootScope.loginUser.adminId }
         })
         .success(
