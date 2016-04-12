@@ -219,14 +219,16 @@ App.controller("InterestListController",['$rootScope','$scope','$filter','$http'
 
     //每页显示数量
     $scope.pageCountNumChange = function(){
+        if (!$scope.pageCount || $scope.pageCount < 1) {
+            return;
+        }
         $scope.pageIndex = 1;
         $scope.pageStartNum = 1;
         $scope.searchInt();
     };
     //跳页
     $scope.pageIndexChange = function(){
-        if($scope.pageIndex<1 || $scope.pageIndex > $scope.pageLastIndex)
-        {
+        if (!$scope.pageIndex || $scope.pageIndex < 1 || $scope.pageIndex > $scope.pageLastIndex) {
             return;
         }
         $scope.searchInt();

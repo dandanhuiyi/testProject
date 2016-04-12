@@ -2,7 +2,7 @@
 <div class="panel panel-default" ng-controller="TeacherEditController">
     <div class="panel-heading"><a ng-click="goBack();">返回</a>&nbsp;详细信息</div>
     <div class="panel-body">
-        <form class="form-horizontal ng-pristine ng-valid" name="addForm" novalidate>
+        <form class="form-horizontal form-validate" name="addForm" novalidate>
             <fieldset>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">老师姓名:</label>
@@ -87,7 +87,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">电话:</label>
                     <div class="col-sm-3">
-                        <input  ng-model="teacher.teacherPhone" name="teacherPhone" class="form-control" type="text">
+                        <input  ng-model="teacher.teacherPhone" name="teacherPhone" class="form-control" type="text" ng-maxlength="11"  ng-pattern="/^[0-9]*[1-9][0-9]*$/">
                     </div>
                 </div>
             </fieldset>

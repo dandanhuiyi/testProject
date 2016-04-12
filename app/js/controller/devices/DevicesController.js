@@ -163,15 +163,17 @@ App.controller("DevicesController",['$rootScope','$scope','$filter','$http','$co
         $scope.getVideoList();
     };
     //每页显示数量改变
-    $scope.pageCountNumChange = function(){
+    $scope.pageCountNumChange = function() {
+        if (!$scope.pageCount || $scope.pageCount < 1) {
+            return;
+        }
         $scope.pageIndex = 1;
         $scope.pageStartNum = 1;
         $scope.getVideoList();
     };
     //跳页
-    $scope.pageIndexChange = function(){
-        if($scope.pageIndex<1 || $scope.pageIndex > $scope.pageLastIndex)
-        {
+    $scope.pageIndexChange = function() {
+        if (!$scope.pageIndex || $scope.pageIndex < 1 || $scope.pageIndex > $scope.pageLastIndex) {
             return;
         }
         $scope.getVideoList();

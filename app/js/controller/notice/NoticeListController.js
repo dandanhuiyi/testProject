@@ -65,7 +65,7 @@ App.controller("NoticeListController",['$rootScope','$scope','$filter','$http','
             offset: $scope.pageCount
         };
         $scope.getDate(params,$scope.serviceUrl,function(response){
-            if(reponse && response.code == 0) {
+            if(response && response.code == 0) {
                 $scope.noticeList = response.list;
                 $scope.dataCount = response.count;
                 $scope.pageCalc();
@@ -176,14 +176,16 @@ App.controller("NoticeListController",['$rootScope','$scope','$filter','$http','
     };
     //每页显示数量改变
     $scope.pageCountNumChange = function(){
+        if (!$scope.pageCount || $scope.pageCount < 1) {
+            return;
+        }
         $scope.pageIndex = 1;
         $scope.pageStartNum = 1;
         $scope.initList();
     };
     //跳页
     $scope.pageIndexChange = function(){
-        if($scope.pageIndex<1 || $scope.pageIndex > $scope.pageLastIndex)
-        {
+        if (!$scope.pageIndex || $scope.pageIndex < 1 || $scope.pageIndex > $scope.pageLastIndex) {
             return;
         }
         $scope.initList();

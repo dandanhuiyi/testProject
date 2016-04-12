@@ -92,7 +92,8 @@ App.controller("NoticeAddController",['$rootScope','$scope','$filter','$http','$
                     });
         }
         else{
-            //alert(0);
+            $scope.noticeForm.noticeSub.$dirty = true;
+            $scope.noticeForm.noticeText.$dirty = true;
         }
     };
 

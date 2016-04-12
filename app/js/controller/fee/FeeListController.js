@@ -186,14 +186,16 @@ App.controller("FeeListController",['$rootScope','$scope','$filter','$http','$co
     };
     //每页显示数量改变
     $scope.pageCountNumChange = function(){
+        if (!$scope.pageCount || $scope.pageCount < 1) {
+            return;
+        }
         $scope.pageIndex = 1;
         $scope.pageStartNum = 1;
         $scope.getFeeList();
     };
     //跳页
     $scope.pageIndexChange = function(){
-        if($scope.pageIndex<1 || $scope.pageIndex > $scope.pageLastIndex)
-        {
+        if (!$scope.pageIndex || $scope.pageIndex < 1 || $scope.pageIndex > $scope.pageLastIndex) {
             return;
         }
         $scope.getFeeList();

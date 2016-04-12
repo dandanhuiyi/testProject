@@ -27,7 +27,8 @@ App.controller("InterestEditController",['$rootScope','$scope','$filter','$http'
                 function(response){
                     if(response && response.code==0){
                         $scope.teacherList=response.list;
-                        $scope.isLoading = false;
+                        $scope.initFeeList();
+                        //$scope.isLoading = false;
                     }
                     else if (response && response.code != 0) {
                         alert($rootScope.getErMsge(response.code));
@@ -61,7 +62,8 @@ App.controller("InterestEditController",['$rootScope','$scope','$filter','$http'
                 function(response){
                     if(response && response.code==0){
                         $scope.feeList=response.list;
-                        $scope.isLoading = false;
+                        $scope.getInterestByName();
+                        //$scope.isLoading = false;
                     }
                     else if (response && response.code != 0) {
                         alert($rootScope.getErMsge(response.code));
@@ -166,8 +168,8 @@ App.controller("InterestEditController",['$rootScope','$scope','$filter','$http'
     };
 
     $scope.initTeacherList();
-    $scope.initFeeList();
-    $scope.getInterestByName();
+    //$scope.initFeeList();
+    //$scope.getInterestByName();
 
 
 
