@@ -1,7 +1,7 @@
 <div class="panel panel-default" ng-controller="FoodController">
     <div class="panel-heading">本周餐表</div>
     <div class="panel-body">
-        <form class="form-horizontal ng-pristine ng-valid" name="addFrom" novalidate>
+        <form class="form-horizontal form-validate" name="addFrom" novalidate>
             <!--
             <fieldset>
                 <div class="form-group">
@@ -91,10 +91,10 @@
                                 <input ng-model="food.foods.foodB" placeholder="早" class="form-control" type="text" required>
                         </div>
                         <div class="col-md-3">
-                            <input  ng-model="food.foods.foodL" placeholder="中" class="form-control" type="text">
+                            <input  ng-model="food.foods.foodL" placeholder="中" class="form-control" type="text" required>
                         </div>
                         <div class="col-md-3">
-                            <input  ng-model="food.foods.foodD" placeholder="晚" class="form-control" type="text">
+                            <input  ng-model="food.foods.foodD" placeholder="晚" class="form-control" type="text" required>
                         </div>
                     </div>
                 </div>

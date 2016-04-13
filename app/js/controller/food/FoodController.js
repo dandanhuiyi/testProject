@@ -42,36 +42,39 @@ App.controller("FoodController",['$rootScope','$scope','$http','$cookieStore','$
 
 
 
-    $scope.updateFood = function(){
-        $scope.isLoading = true;
-        saveFoods();
-        $http({
-            headers: {token: $rootScope.loginUser.token},
-            url: $rootScope.serviceUrl + '/foodWeek',
-            params: {
-                adminId: $rootScope.loginUser.adminId,
-                foodEntity:$scope.food
-            }
-        })
-            .success(
-                function (response) {
-                    if (response && response.code == 0) {
+    $scope.updateFood = function() {
+        if ($scope.addFrom.$valid) {
+
+            $scope.isLoading = true;
+            saveFoods();
+            $http({
+                headers: {token: $rootScope.loginUser.token},
+                url: $rootScope.serviceUrl + '/foodWeek',
+                params: {
+                    adminId: $rootScope.loginUser.adminId,
+                    foodEntity: $scope.food
+                }
+            })
+                .success(
+                    function (response) {
+                        if (response && response.code == 0) {
+                            $scope.isLoading = false;
+                        }
+                        else if (response && response.code != 0) {
+                            alert($rootScope.getErMsge(response.code));
+                            $scope.isLoading = false;
+                            $state.go("login");
+                        }
                         $scope.isLoading = false;
                     }
-                    else if (response && response.code != 0) {
-                        alert($rootScope.getErMsge(response.code));
+                )
+                .error(
+                    function (e) {
+                        alert('数据更新失败.');
                         $scope.isLoading = false;
-                        $state.go("login");
                     }
-                    $scope.isLoading = false;
-                }
-            )
-            .error(
-                function (e) {
-                    alert('数据更新失败.');
-                    $scope.isLoading = false;
-                }
-            )
+                )
+        }
     };
 
     $scope.foodList=[];

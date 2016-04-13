@@ -125,6 +125,7 @@ App.controller("InterestEditController",['$rootScope','$scope','$filter','$http'
         if($scope.addForm.$valid){
             $scope.isLoading = true;
             $scope.interest.teacherId = $scope.teacher.selected.teacherId;
+            $scope.interest.psId = $scope.fee.selected.psId;
 
             $http({
                 headers: {token: $rootScope.loginUser.token},

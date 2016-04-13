@@ -64,3 +64,14 @@
         </div>
     </div>
 </div>
+<!-- Templates -->
+<script type="text/ng-template" id="reportDialog">
+    <form class="form-horizontal form-validate" name="rForm" novalidate>
+    <div>
+        <h3 class="mt0">报表导出时间</h3>
+        <div class=" inline"><label for="yyyy" class="control-label">年:</label><input name="yyyy" class="form-control" type="number" ng-model="rYear" min="1900" max="{{cYear}}" required/></div>
+        <div class=" inline"><label for="mm" class="control-label">月:</label><input name="mm" class="form-control" type="number" ng-model="rMonth" min="1" max="12"/> </code></div>
+        <div style="margin-top: 5px;"><button type='button' class='btn btn-default btn-confirm' ng-click='closeThisDialog(0)'>取消</button><button type='button' class='btn btn-primary' ng-click='exportR({y:rYear,m:rMonth})'>确定</button></div>
+    </div>
+    </form>
+</script>

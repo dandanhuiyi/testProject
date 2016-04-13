@@ -121,7 +121,7 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
         url: '/app',
         templateUrl: helper.basepath('app.html'),
         controller: 'AppController',
-        resolve: helper.resolveFor('modernizr', 'icons','ngDialog')
+        resolve: helper.resolveFor('modernizr', 'icons','ngDialog','loaders.css')
     })
     .state('app.dashboard', {
         url: '/dashboard',
@@ -282,7 +282,7 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
           url:'/payInfo',
           title:'payInfo',
           templateUrl:helper.basepath('pay/payInfoList.html'),
-          resolve: helper.resolveFor('loaders.css')
+          resolve: helper.resolveFor('loaders.css','ngDialog')
       })
 
     // 

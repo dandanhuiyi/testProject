@@ -2,7 +2,7 @@
 <div class="panel panel-default" ng-controller="FeeEditController">
     <div class="panel-heading"><a ng-click="goBack()">返回</a>&nbsp;详细信息</div>
     <div class="panel-body">
-        <form class="form-horizontal ng-pristine ng-valid" name="addForm" novalidate>
+        <form class="form-horizontal form-validate" name="addForm" novalidate>
             <fieldset>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">单价名称:</label>
@@ -15,7 +15,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">单价金额（分）:</label>
                     <div class="col-sm-3">
-                        <input name="psPrice" ng-model="fee.psPrice" class="form-control" type="text" required>
+                        <input name="psPrice" ng-model="fee.psPrice" class="form-control" type="number" required>
                     </div>
                 </div>
             </fieldset>

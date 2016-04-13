@@ -7,7 +7,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">老师姓名:</label>
                     <div class="col-sm-3">
-                        <input ng-model="teacher.teacherName" name="teacherName" class="form-control" type="text">
+                        <input ng-model="teacher.teacherName" name="teacherName" class="form-control" type="text" required>
                     </div>
                 </div>
             </fieldset>
@@ -27,7 +27,7 @@
                     </div>
                     <button class="btn btn-default" ng-click="editTeacherPic()">修改</button>
                 </div>
-                <div ng-if="editPic" class="form-group">
+                <div ng-if="editPic" class="form-group" style="margin-top: 8px">
                     <label class="col-sm-2 control-label"></label>
                     <div class="col-lg-8">
                         <!--文件上传 开始-->
@@ -99,7 +99,7 @@
                     </div>
                     <button class="btn btn-default" ng-click="editTeacherVideo()">修改</button>
                 </div>
-                <div ng-if="editVideo" class="form-group">
+                <div ng-if="editVideo" class="form-group" style="margin-top: 8px">
                     <label class="col-lg-2 control-label"></label>
                     <div class="col-lg-8">
                         <!--文件上传 开始-->

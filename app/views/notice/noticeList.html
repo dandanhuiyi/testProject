@@ -15,6 +15,7 @@
                         <tr>
                             <th class="text-center" style="white-space: nowrap">#</th>
                             <th class="text-center">发送人</th>
+                            <th class="text-center">发送时间</th>
                             <th class="text-center">标题</th>
                             <th class="text-center">通知内容</th>
                             <th class="text-center">通知类型</th>
@@ -23,7 +24,8 @@
                         <tbody>
                         <tr ng-repeat="notice in noticeList">
                             <td class="text-center">{{$index + pageStartNum}}</td>
-                            <td class="col-md-1 text-center"><div class="small">{{notice.noticeName}}</div> <div class="small">{{notice.noticeTime}}</div></td>
+                            <td class="col-md-1 text-center">{{notice.noticeName}}</td>
+                            <td class="col-md-1 text-center">{{notice.noticeTime}}</td>
                             <td class="text-center">{{notice.noticeSub}}</td>
                             <td class="col-md-7 small">{{notice.noticeText}}</td>
                             <td class="col-md-1 text-center"><div class="small">{{showTypeName(notice.noticeType)}}</div></td>

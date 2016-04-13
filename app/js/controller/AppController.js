@@ -129,6 +129,7 @@ App.controller('AppController',
                     plain: true,
                     className: 'ngdialog-theme-default'
                 }).then(function (value) {
+                    $scope.isLoading = true;
                     $http({
                         headers: {token: $rootScope.loginUser.token},
                         method: 'POST',
@@ -139,17 +140,19 @@ App.controller('AppController',
                     })
                         .success(
                             function (response) {
-                                if (response && response.code == 2) {
+                                if (response && response.code == 0) {
+                                    $cookieStore.remove('loginUser');
+                                    $cookieStore.remove('menuRole');
+                                    $state.go('login');
+                                    $scope.isLoading = false;
                                 }
                             })
                         .error(
                             function (e) {
                                 alert(e);
+                                $scope.isLoading = false;
                             });
 
-                    $cookieStore.remove('loginUser');
-                    $cookieStore.remove('menuRole');
-                    $state.go('login');
                 });
 
             };

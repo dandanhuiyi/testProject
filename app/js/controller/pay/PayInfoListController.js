@@ -1,7 +1,7 @@
 /**
  * Created by lost on 2016/4/5.
  */
-App.controller("PayInfoListController",['$rootScope','$scope','$filter','$http','$cookieStore','$state',function($rootScope,$scope,$filter,$http,$cookieStore,$state){
+App.controller("PayInfoListController",['$rootScope','$scope','$filter','$http','$cookieStore','$state','ngDialog',function($rootScope,$scope,$filter,$http,$cookieStore,$state,ngDialog){
 
 
     $scope.payInfoList=[];
@@ -10,26 +10,44 @@ App.controller("PayInfoListController",['$rootScope','$scope','$filter','$http',
 
     $scope.serviceUrl = $rootScope.serviceUrl + '/payInfoList';
 
-    $scope.exportReport = function(){
-            window.open($rootScope.serviceUrl + '/reportList?adminId='+$rootScope.loginUser.adminId);
-        /*$scope.isLoading = true;
-        $http({
-            headers: {token: $rootScope.loginUser.token},
-            method: 'POST',
-            url: $rootScope.serviceUrl + '/reportList',
-            params:{adminId: $rootScope.loginUser.adminId}
-        })
-            .success(
-                function (response) {
-                    $scope.isLoading = false;
-                })
-            .error(
-                function (e) {
-                    alert('导出失败.');
-                    $scope.isLoading = false;
-                });
-*/
+    $scope.rYear= new Date().getFullYear();
+    $scope.rMonth= new Date().getMonth() + 1;
 
+    $scope.exportReport = function(){
+        ngDialog.openConfirm({
+            template: 'reportDialog',
+            className: 'ngdialog-theme-default',
+            controller:['$rootScope','$scope',function($rootScope,$scope){
+                $scope.rYear = new Date().getFullYear();
+                $scope.rMonth = '';
+                $scope.cYear = $scope.rYear;
+
+                $scope.exportR=function(p){
+                    if($scope.rForm.$valid){
+                        if(!p.y){
+                            return false;
+                        }
+                        if(p.m){
+                            window.open($rootScope.serviceUrl + '/reportList?adminId='+$rootScope.loginUser.adminId+'&year='+ p.y+'&month='+p.m);
+                        }
+                        else{
+                            window.open($rootScope.serviceUrl + '/reportList?adminId='+$rootScope.loginUser.adminId+'&year='+ p.y);
+                        }
+                        $scope.closeThisDialog(1);
+                    }
+
+                }
+            }]
+        });
+
+        /*
+         $http({
+         headers: {token: $rootScope.loginUser.token},
+         method: 'Get',
+         url: $rootScope.serviceUrl + '/reportList',
+         params:{adminId: $rootScope.loginUser.adminId}
+         })
+        **/
     };
 
     $scope.searchContent='';
