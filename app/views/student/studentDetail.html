@@ -55,7 +55,7 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label">联系方式:</label>
                     <div class="col-sm-4">
-                        <input name="phone" ng-model="stu.phone" name="classTel" class="form-control" type="number" maxlength="11" min="0" required>
+                        <input name="phone" ng-model="stu.phone" name="classTel" class="form-control" type="text" ng-maxlength="11" ng-minlength="8" ng-pattern="/^[0-9]*[1-9][0-9]*$/" required>
                     </div>
                 </div>
             </fieldset>

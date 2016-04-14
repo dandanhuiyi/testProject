@@ -151,6 +151,9 @@ App.controller('AppController',
                             function (e) {
                                 alert(e);
                                 $scope.isLoading = false;
+                                $cookieStore.remove('loginUser');
+                                $cookieStore.remove('menuRole');
+                                $state.go('login');
                             });
 
                 });

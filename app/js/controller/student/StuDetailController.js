@@ -44,7 +44,7 @@ App.controller("StuDetailController",['$rootScope','$scope','$filter','$http','$
 
                         //学生状态
                         $scope.state=[];
-                        $scope.stateList=[{name:'已注销',value:0},{name:'正常',value:1},{name:'休学',value:2},{name:'毕业',value:3}];
+                        $scope.stateList=[{name:'已注销',value:0},{name:'正常',value:1}];
                         //学生状态
                         $scope.state.selected = $filter('filter')($scope.stateList,{value:$scope.stu.stuState})[0];
                         //班级选择

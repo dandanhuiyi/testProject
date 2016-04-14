@@ -3,7 +3,7 @@
     "menu_id": 1,
     "text": "首页",
     "sref": "app.dashboard",
-    "icon": "fa fa-file-o"
+    "icon": "icon-home"
   },
   {
     "menu_id": 2,
