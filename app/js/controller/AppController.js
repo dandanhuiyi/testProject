@@ -140,7 +140,7 @@ App.controller('AppController',
                     })
                         .success(
                             function (response) {
-                                if (response && response.code == 0) {
+                                if (response && (response.code == 0||response.code == 2)) {
                                     $cookieStore.remove('loginUser');
                                     $cookieStore.remove('menuRole');
                                     $state.go('login');
