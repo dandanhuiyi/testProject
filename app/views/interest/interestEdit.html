@@ -100,7 +100,7 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label">已参加人数:</label>
                     <div class="col-sm-3">
-                        <input name="interestNum" ng-model="interest.interestNum" class="form-control" type="number" required>
+                        <input name="interestNum" ng-model="interest.interestNum" class="form-control" type="number" min="0" max="{{interest.interestCount}}" required>
                     </div>
                 </div>
             </fieldset>

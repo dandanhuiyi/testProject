@@ -1,7 +1,7 @@
 /**
  * Created by lost on 2016/3/29.
  */
-App.controller("FoodController",['$rootScope','$scope','$http','$cookieStore','$state',function($rootScope,$scope,$http,$cookieStore,$state) {
+App.controller("FoodController",['$rootScope','$scope','$http','$cookieStore','$state','Notify',function($rootScope,$scope,$http,$cookieStore,$state,Notify) {
 
     $rootScope.checkUser();
 
@@ -58,6 +58,10 @@ App.controller("FoodController",['$rootScope','$scope','$http','$cookieStore','$
                 .success(
                     function (response) {
                         if (response && response.code == 0) {
+                            Notify.alert(
+                                '<em class="fa fa-check"></em>本周餐表更新成功!',
+                                {status: 'info', pos:'bottom-center'}
+                            );
                             $scope.isLoading = false;
                         }
                         else if (response && response.code != 0) {

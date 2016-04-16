@@ -24,9 +24,9 @@
                             <td>{{ video.videoName }}</td>
                             <td>{{video.videoType?'自定义设备':'基础设备'}}</td>
                             <td>{{ video.videoDesc }}</td>
-                            <td><a href="{{imgUrl + video.videoPic }}" target="_blank">直播图片</a></td>
+                            <td><a ng-href="{{video.videoPic ? imgUrl + video.videoPic:''}}" target="_blank">直播图片</a></td>
                             <td>{{ video.videoState?'正常':'无效' }}</td>
-                            <td><a href="{{video.videoUrl }}" target="_blank">直播源</a></td>
+                            <td><a ng-href="{{video.videoUrl ? video.videoUrl:''}}" target="_blank">直播源</a></td>
                             <td style="white-space: nowrap">
                                 <div class="buttons">
                                     <button type="button" ng-click="editDevice(video.videoId)" title="编辑" class="btn btn-sm btn-info">
