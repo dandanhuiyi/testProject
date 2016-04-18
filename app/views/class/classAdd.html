@@ -2,12 +2,12 @@
 <div class="panel panel-default" ng-controller="ClassAddController">
     <div class="panel-heading"><a ng-click="goBack()">返回</a>&nbsp;详细信息</div>
     <div class="panel-body">
-        <form name="addFrom" novalidate="" class="form-horizontal form-validate">
+        <form class="form-horizontal form-validate" name="addForm" novalidate>
             <fieldset>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">班级名称:</label>
                     <div class="col-sm-3">
-                        <input name="className" ng-model="class.className" class="form-control" type="text" required>
+                        <input name="className" ng-model="class.className" class="form-control" type="text" ng-pattern="/^[a-zA-Z0-9\u4e00-\u9fa5,.，。]*$/" required>
                     </div>
                 </div>
             </fieldset>
@@ -28,7 +28,7 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label">学生人数:</label>
                     <div class="col-sm-3">
-                        <input name="classNum" ng-model="class.classNum" class="form-control" type="number" required>
+                        <input name="classNum" ng-model="class.classNum" class="form-control" type="number" min="0" required>
                     </div>
                 </div>
             </fieldset>
@@ -36,7 +36,7 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label">班级描述:</label>
                     <div class="col-sm-6">
-                        <textarea name="classDesc" ng-model="class.classDesc" class="form-control" row="3"></textarea>
+                        <textarea ng-pattern="/^[a-zA-Z0-9\u4e00-\u9fa5,.，。]*$/" name="classDesc" ng-model="class.classDesc" class="form-control" row="3"></textarea>
                     </div>
                 </div>
             </fieldset>

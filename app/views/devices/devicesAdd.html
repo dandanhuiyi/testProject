@@ -1,4 +1,4 @@
-<H3>添加监控设备</H3>
+<h3>添加监控设备</h3>
 <div class="panel panel-default" ng-controller="DevicesAddController">
     <div class="panel-heading"><a ng-click="goBack()">返回</a>&nbsp;详细信息</div>
     <div class="panel-body">
@@ -7,7 +7,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">设备名称:</label>
                     <div class="col-sm-3">
-                        <input ng-model="video.videoName" name="videoName" class="form-control" type="text" required>
+                        <input ng-model="video.videoName" name="videoName" class="form-control" type="text" ng-pattern="/^[a-zA-Z0-9\u4e00-\u9fa5,.，。]*$/" required>
                     </div>
                 </div>
             </fieldset>
@@ -28,7 +28,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">设备描述:</label>
                     <div class="col-sm-5">
-                        <textarea ng-model="video.videoDesc" name="videoDesc" class="form-control"></textarea>
+                        <textarea ng-model="video.videoDesc" ng-pattern="/^[a-zA-Z0-9\u4e00-\u9fa5,.，。]*$/" name="videoDesc" class="form-control"></textarea>
                     </div>
                 </div>
             </fieldset>

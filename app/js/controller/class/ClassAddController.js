@@ -27,7 +27,7 @@ App.controller("ClassAddController",['$rootScope','$scope','$filter','$http','$c
                 function(response){
                     if(response && response.code==0){
                         $scope.teacherList=response.list;
-                        $scope.teacher.selected = $filter('filter')($scope.teacherList,$scope.class.teacherId,'value')[0];
+                        //$scope.teacher.selected = $filter('filter')($scope.teacherList,$scope.class.teacherId,'value')[0];
                         $scope.isLoading = false;
                     }
                     else if (response && response.code != 0) {

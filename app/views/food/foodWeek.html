@@ -88,13 +88,13 @@
                     <label class="col-sm-2 control-label">{{food.Day}}:</label>
                     <div class="col-lg-9">
                         <div class="col-md-3">
-                                <input ng-model="food.foods.foodB" placeholder="早" class="form-control" type="text" required>
+                                <input ng-model="food.foods.foodB" placeholder="早" class="form-control" ng-pattern="/^[a-zA-Z0-9\u4e00-\u9fa5,.，。]*$/" type="text" required>
                         </div>
                         <div class="col-md-3">
-                            <input  ng-model="food.foods.foodL" placeholder="中" class="form-control" type="text" required>
+                            <input  ng-model="food.foods.foodL" placeholder="中" class="form-control" ng-pattern="/^[a-zA-Z0-9\u4e00-\u9fa5,.，。]*$/" type="text" required>
                         </div>
                         <div class="col-md-3">
-                            <input  ng-model="food.foods.foodD" placeholder="晚" class="form-control" type="text" required>
+                            <input  ng-model="food.foods.foodD" placeholder="晚" class="form-control" ng-pattern="/^[a-zA-Z0-9\u4e00-\u9fa5,.，。]*$/" type="text" required>
                         </div>
                     </div>
                 </div>

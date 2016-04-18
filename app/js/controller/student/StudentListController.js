@@ -72,7 +72,7 @@ App.controller("StudentListController",['$rootScope','$scope','$filter','$http',
 
 
     //学生状态
-    $scope.stateList=[{name:'已注销',value:0},{name:'正常',value:1}];
+    $scope.stateList=[{name:'已注销',value:0},{name:'正常',value:1},{name:'毕业',value:2}];
     $scope.showState=function(state){
         var selectState = $filter('filter')($scope.stateList,state,'value');
         return selectState.length ? selectState[0].name : 'Empty';

@@ -75,9 +75,9 @@ App.controller("ClassListController",['$rootScope','$scope','$filter','$http','$
 
     //毕业
     $scope.completeClass=function(cla){
-        alert('毕业');
-        /*
+
         $http({
+            headers: {token: $rootScope.loginUser.token},
             method: 'POST',
             url: $rootScope.serviceUrl + '/classMge',
             params: {
@@ -87,16 +87,23 @@ App.controller("ClassListController",['$rootScope','$scope','$filter','$http','$
             }
         })
             .success(
-                function (respon) {
-                    if (respon.code == 0) {
-                        $scope.initList();
+                function (response) {
+                    if (response && response.code == 0) {
+
                     }
+                    else if (response && response.code != 0) {
+                        alert($rootScope.getErMsge(response.code));
+                        $scope.isLoading = false;
+                        $state.go("login");
+                    }
+                    $scope.initTeachers();
+                    $scope.isLoading = false;
                 })
             .error(
                 function (e) {
                     alert(e);
                 });
-                */
+
     };
 
     //删除
@@ -127,7 +134,7 @@ App.controller("ClassListController",['$rootScope','$scope','$filter','$http','$
 
                         }
                         else if (response && response.code == 1) {
-                            alert(response.errorMessage);
+                            alert($rootScope.getErMsge(response.code));
                         }
                         else if (response && response.code != 0) {
                             alert($rootScope.getErMsge(response.code));

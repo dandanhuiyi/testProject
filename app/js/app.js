@@ -35,8 +35,8 @@ App.run(["$rootScope", "$state", "$stateParams",  '$window', '$templateCache', '
   $rootScope.$storage = $window.localStorage;
 
 
-
-    $rootScope.serviceUrl = "http://101.201.76.213/NJService/api/admin";
+    $rootScope.serviceUrl = "http://voll588.imwork.net:18213/NJService/api/admin";
+    //$rootScope.serviceUrl = "http://101.201.76.213/NJService/api/admin";
     $rootScope.imgUrl="http://101.201.76.213/NJService/";
     // Scope Globals
     // ----------------------------------- 
@@ -169,13 +169,13 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
       })
       .state('app.classAdd',{
           url:'/class/add',
-          title:'class',
+          title:'classAdd',
           templateUrl:helper.basepath('class/classAdd.html'),
           resolve: helper.resolveFor('loaders.css','ui.select')
       })
       .state('app.classEdit',{
           url:'/class/edit/{claName}',
-          title:'class',
+          title:'classEdit',
           templateUrl:helper.basepath('class/classEdit.html'),
           resolve: helper.resolveFor('loaders.css','ui.select')
       })
