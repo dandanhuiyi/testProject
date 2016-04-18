@@ -163,7 +163,7 @@ App.controller("ClassListController",['$rootScope','$scope','$filter','$http','$
         if ($scope.searchContent) {
             params = {
                 adminId: $rootScope.loginUser.adminId,
-                stuId: $scope.searchContent,
+                className: $scope.searchContent,
                 cursor: ($scope.pageIndex - 1) * $scope.pageCount,
                 offset: $scope.pageCount
             };

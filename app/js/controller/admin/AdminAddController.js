@@ -1,7 +1,7 @@
 /**
  * Created by lost on 2016/3/22.
  */
-App.controller("AdminAddController",['$rootScope','$scope','$filter','$http','$cookieStore','$state','$stateParams',function($rootScope,$scope,$filter,$http,$cookieStore,$state,$stateParams){
+App.controller("AdminAddController",['$rootScope','$scope','$filter','$http','$cookieStore','$state','$stateParams','Base64',function($rootScope,$scope,$filter,$http,$cookieStore,$state,$stateParams,Base64){
 
     $rootScope.checkUser();
 
@@ -22,6 +22,10 @@ App.controller("AdminAddController",['$rootScope','$scope','$filter','$http','$c
         if($scope.addFrom.$valid){
             $scope.isLoading = true;
             $scope.admin.adminRoleId = $scope.role.selected.value;
+            if($scope.admin.adminPassword){
+                $scope.admin.adminPassword = Base64.encode($scope.admin.adminPassword);
+            }
+
 
             $http({
                 headers: {token: $rootScope.loginUser.token},

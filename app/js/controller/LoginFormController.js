@@ -6,7 +6,7 @@
  * Demo for login api
  =========================================================*/
 
-App.controller('LoginFormController', ['$rootScope','$scope', '$http', '$state', '$cookieStore','$cookies',function($rootScope,$scope, $http, $state, $cookieStore,$cookies) {
+App.controller('LoginFormController', ['$rootScope','$scope', '$http', '$state', '$cookieStore','$cookies','Base64',function($rootScope,$scope, $http, $state, $cookieStore,$cookies,Base64) {
 
 
     // bind here all data from the form
@@ -21,7 +21,7 @@ App.controller('LoginFormController', ['$rootScope','$scope', '$http', '$state',
             $http({
                 method: 'POST',
                 url: $scope.serviceUrl + '/login',
-                params: {userName: $scope.account.username, password: $scope.account.password}
+                params: {userName: $scope.account.username, password: Base64.encode($scope.account.password)}
                 })
                 .success(function (response) {
                     // assumes if ok, response is an object with some data, if not, a string with error

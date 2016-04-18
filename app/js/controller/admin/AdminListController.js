@@ -2,7 +2,7 @@
  * Created by lost on 2016/3/5.
  */
 
-App.controller("AdminListController",['$rootScope','$scope','$filter','$http','$cookieStore','Notify','$state','ngDialog',function($rootScope,$scope,$filter,$http,$cookieStore,Notify,$state,ngDialog){
+App.controller("AdminListController",['$rootScope','$scope','$filter','$http','$cookieStore','Notify','$state','ngDialog','Base64',function($rootScope,$scope,$filter,$http,$cookieStore,Notify,$state,ngDialog,Base64){
 
 
     $rootScope.checkUser();
@@ -57,7 +57,12 @@ App.controller("AdminListController",['$rootScope','$scope','$filter','$http','$
 
         $scope.isLoading = true;
 
+        if(admin.adminPassword){
+            admin.adminPassword = Base64.encode(admin.adminPassword);
+        }
+
         $http({
+            headers: {token: $rootScope.loginUser.token},
             method: 'POST',
             url: $scope.serviceUrl + '/adminMge',
             params: {
