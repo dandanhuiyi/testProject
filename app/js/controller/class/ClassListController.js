@@ -75,36 +75,41 @@ App.controller("ClassListController",['$rootScope','$scope','$filter','$http','$
 
     //毕业
     $scope.completeClass=function(cla){
+		ngDialog.openConfirm({
+            template: "<p>确定所选班级毕业?</p><div><button type='button' class='btn btn-default btn-confirm' ng-click='closeThisDialog(0)'>取消</button><button type='button' class='btn btn-primary' ng-click='confirm(1)'>确定</button></div>",
+            plain: true,
+            className: 'ngdialog-theme-default'
+        }).then(function (value) {
 
-        $http({
-            headers: {token: $rootScope.loginUser.token},
-            method: 'POST',
-            url: $rootScope.serviceUrl + '/classMge',
-            params: {
-                adminId: $scope.loginUser.adminId,
-                classEntity: cla,
-                opType: 'complete'
-            }
-        })
-            .success(
-                function (response) {
-                    if (response && response.code == 0) {
+			$http({
+				headers: {token: $rootScope.loginUser.token},
+				method: 'POST',
+				url: $rootScope.serviceUrl + '/classMge',
+				params: {
+					adminId: $scope.loginUser.adminId,
+					classEntity: cla,
+					opType: 'complete'
+				}
+			})
+				.success(
+					function (response) {
+						if (response && response.code == 0) {
 
-                    }
-                    else if (response && response.code != 0) {
-                        alert($rootScope.getErMsge(response.code));
-                        $scope.isLoading = false;
-                        $state.go("login");
-                    }
-                    $scope.initTeachers();
-                    $scope.isLoading = false;
-                })
-            .error(
-                function (e) {
-                    alert(e);
-                });
-
-    };
+						}
+						else if (response && response.code != 0) {
+							alert($rootScope.getErMsge(response.code));
+							$scope.isLoading = false;
+							$state.go("login");
+						}
+						$scope.initTeachers();
+						$scope.isLoading = false;
+					})
+				.error(
+					function (e) {
+						alert(e);
+					});
+		});
+	};
 
     //删除
     $scope.removeClass=function(cla) {
