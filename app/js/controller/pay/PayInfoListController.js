@@ -28,10 +28,10 @@ App.controller("PayInfoListController",['$rootScope','$scope','$filter','$http',
                             return false;
                         }
                         if(p.m){
-                            window.open($rootScope.serviceUrl + '/reportList?adminId='+$rootScope.loginUser.adminId+'&year='+ p.y+'&month='+p.m);
+                            window.open($rootScope.serviceUrl + '/reportList?token='+$rootScope.loginUser.token+'&adminId='+$rootScope.loginUser.adminId+'&year='+ p.y+'&month='+p.m);
                         }
                         else{
-                            window.open($rootScope.serviceUrl + '/reportList?adminId='+$rootScope.loginUser.adminId+'&year='+ p.y);
+                            window.open($rootScope.serviceUrl + '/reportList?token='+$rootScope.loginUser.token+'&adminId='+$rootScope.loginUser.adminId+'&year='+ p.y);
                         }
                         $scope.closeThisDialog(1);
                     }

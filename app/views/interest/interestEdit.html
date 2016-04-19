@@ -7,7 +7,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">兴趣班名称:</label>
                     <div class="col-sm-3">
-                        <input name="interestName" ng-model="interest.interestName" class="form-control" type="text" ng-pattern="/^[a-zA-Z0-9\u4e00-\u9fa5,.，。]*$/" required>
+                        <input name="interestName" ng-model="interest.interestName" class="form-control" type="text" ng-pattern="/^[a-zA-Z0-9\u4e00-\u9fa5\s]*$/" required>
                     </div>
                 </div>
             </fieldset>
@@ -28,7 +28,7 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label">兴趣班描述:</label>
                     <div class="col-sm-6">
-                        <textarea ng-pattern="/^[a-zA-Z0-9\u4e00-\u9fa5,.，。]*$/" name="interestDesc" ng-model="interest.interestDesc" class="form-control" row="3"></textarea>
+                        <textarea ng-pattern="/[^/\\@#$%\^&*+-]+/" name="interestDesc" ng-model="interest.interestDesc" class="form-control" row="3"></textarea>
                     </div>
                 </div>
             </fieldset>

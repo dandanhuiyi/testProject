@@ -7,7 +7,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">单价名称:</label>
                     <div class="col-sm-3">
-                        <input name="psName" ng-model="fee.psName" class="form-control" type="text" ng-pattern="/^[a-zA-Z0-9\u4e00-\u9fa5,.，。]*$/" required>
+                        <input name="psName" ng-model="fee.psName" class="form-control" type="text" ng-pattern="/^[a-zA-Z0-9\u4e00-\u9fa5\s]*$/" required>
                     </div>
                 </div>
             </fieldset>
@@ -15,7 +15,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">单价金额（分）:</label>
                     <div class="col-sm-3">
-                        <input name="psPrice"  ng-model="fee.psPrice" class="form-control" type="number" min="0" required>
+                        <input name="psPrice"  ng-model="fee.psPrice" class="form-control" type="number" min="1" required>
                     </div>
                 </div>
             </fieldset>

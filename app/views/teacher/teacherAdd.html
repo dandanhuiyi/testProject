@@ -7,7 +7,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">老师姓名:</label>
                     <div class="col-sm-3">
-                        <input ng-model="teacher.teacherName" name="teacherName" class="form-control" type="text" ng-pattern="/^[a-zA-Z0-9\u4e00-\u9fa5]*$/" required>
+                        <input ng-model="teacher.teacherName" name="teacherName" class="form-control" type="text" ng-pattern="/^[a-zA-Z0-9\u4e00-\u9fa5\s]*$/" required>
                     </div>
                 </div>
             </fieldset>
@@ -15,7 +15,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">老师信息描述:</label>
                     <div class="col-sm-5">
-                       <textarea ng-model="teacher.teacherInfo" name="teacherInfo" ng-pattern="/[^/\\@#$%\^&*+-]+/" class="form-control"></textarea>
+                       <textarea ng-model="teacher.teacherInfo" name="teacherInfo" ng-pattern="/[^\@\#\$\%\^\&\*]/" class="form-control"></textarea>
                     </div>
                 </div>
             </fieldset>
