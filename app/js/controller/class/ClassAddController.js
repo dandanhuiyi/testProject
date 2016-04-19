@@ -47,7 +47,7 @@ App.controller("ClassAddController",['$rootScope','$scope','$filter','$http','$c
 
 
     $scope.saveClass=function(){
-        if($scope.addFrom.$valid && $scope.teacher.selected){
+        if($scope.addForm.$valid && $scope.teacher.selected){
             $scope.isLoading = true;
             $scope.class.teacherId = $scope.teacher.selected.teacherId;
 
@@ -80,8 +80,8 @@ App.controller("ClassAddController",['$rootScope','$scope','$filter','$http','$c
                     });
         }
         else{
-            $scope.addFrom.className.$dirty=true;
-            $scope.addFrom.classNum.$dirty=true;
+            $scope.addForm.className.$dirty=true;
+            $scope.addForm.classNum.$dirty=true;
         }
 
     };
