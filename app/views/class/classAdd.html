@@ -36,7 +36,7 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label">班级描述:</label>
                     <div class="col-sm-6">
-                        <textarea ng-pattern="/^[a-zA-Z0-9\u4e00-\u9fa5,.，。]*$/" name="classDesc" ng-model="class.classDesc" class="form-control" row="3"></textarea>
+                        <textarea ng-pattern="/[^/\\@#$%\^&*+-]+/" name="classDesc" ng-model="class.classDesc" class="form-control" row="3"></textarea>
                     </div>
                 </div>
             </fieldset>
