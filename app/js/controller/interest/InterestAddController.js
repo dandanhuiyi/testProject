@@ -5,7 +5,7 @@ App.controller("InterestAddController",['$rootScope','$scope','$filter','$http',
 
     $scope.checkUser();
 
-    $scope.interest={};
+    $scope.interest={interestPic:''};
 
     //老师
     $scope.teacher={};
@@ -129,7 +129,13 @@ App.controller("InterestAddController",['$rootScope','$scope','$filter','$http',
     $scope.initFeeList();
 
 
-
+    //日期控件
+    $scope.open = function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+        $scope.opened = true;
+    };
+    $scope.initDate = new Date();
 
 
     ////文件上传/////////////////////////////////////////////////////////////////////////////////////////////////////////////

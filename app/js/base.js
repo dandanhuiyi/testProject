@@ -19678,7 +19678,7 @@ function $IntervalProvider() {
 function $LocaleProvider() {
   this.$get = function() {
     return {
-      id: 'en-us',
+      id: 'zh-cn',
 
       NUMBER_FORMATS: {
         DECIMAL_SEP: '.',
@@ -19711,12 +19711,12 @@ function $LocaleProvider() {
 
       DATETIME_FORMATS: {
         MONTH:
-            'January,February,March,April,May,June,July,August,September,October,November,December'
+			'一月,二月,三月,四月,五月,六月,七月,八月,九月,十月,十一月,十二月'
             .split(','),
-        SHORTMONTH:  'Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec'.split(','),
-        DAY: 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday'.split(','),
-        SHORTDAY: 'Sun,Mon,Tue,Wed,Thu,Fri,Sat'.split(','),
-        AMPMS: ['AM','PM'],
+        SHORTMONTH:  '一月,二月,三月,四月,五月,六月,七月,八月,九月,十月,十一月,十二月'.split(','),
+        DAY: '日,一,二,三,四,五,六'.split(','),
+        SHORTDAY: '日,一,二,三,四,五,六'.split(','),
+        AMPMS: ['上午','下午'],
         medium: 'MMM d, y h:mm:ss a',
         'short': 'M/d/yy h:mm a',
         fullDate: 'EEEE, MMMM d, y',
@@ -52066,9 +52066,9 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
 
 .constant('datepickerPopupConfig', {
   datepickerPopup: 'yyyy-MM-dd',
-  currentText: 'Today',
-  clearText: 'Clear',
-  closeText: 'Done',
+  currentText: '今天',
+  clearText: '重置',
+  closeText: '关闭',
   closeOnDateSelection: true,
   appendToBody: false,
   showButtonBar: true
