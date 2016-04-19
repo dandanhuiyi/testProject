@@ -15,7 +15,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">老师信息描述:</label>
                     <div class="col-sm-5">
-                       <textarea ng-model="teacher.teacherInfo" name="teacherInfo" ng-pattern="/^[a-zA-Z0-9\u4e00-\u9fa5,.，。]*$/" class="form-control"></textarea>
+                       <textarea ng-model="teacher.teacherInfo" name="teacherInfo" ng-pattern="/[^@#$%\^&*+-\\]+/" class="form-control"></textarea>
                     </div>
                 </div>
             </fieldset>
