@@ -35,9 +35,8 @@ App.run(["$rootScope", "$state", "$stateParams",  '$window', '$templateCache', '
   $rootScope.$storage = $window.localStorage;
 
 
-    $rootScope.serviceUrl = "http://voll588.imwork.net:18213/NJService/api/admin";
-    //$rootScope.serviceUrl = "http://101.201.76.213/NJService/api/admin";
-    $rootScope.imgUrl="http://101.201.76.213/NJService/";
+    $rootScope.serviceUrl = "http://101.201.76.213/NJService/api/admin";
+    $rootScope.imgUrl="http://101.201.76.213/static_file/";
     // Scope Globals
     // ----------------------------------- 
     $rootScope.app = {
