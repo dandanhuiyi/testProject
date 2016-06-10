@@ -11,6 +11,7 @@
                     </div>
                 </div>
             </fieldset>
+            <!--
             <fieldset>
                 <div class="form-group">
                     <label class="col-lg-2 control-label">设备类型:</label>
@@ -19,6 +20,20 @@
                             <ui-select-match placeholder="选择类型">{{$select.selected.name }}</ui-select-match>
                             <ui-select-choices repeat="videoType in videoTypeList | filter: $select.search">
                                 <span ng-bind-html="videoType.name | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+            </fieldset>
+            -->
+            <fieldset>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">状态:</label>
+                    <div class="col-sm-2">
+                        <ui-select ng-model="videoState.selected" theme="bootstrap" class="text-left">
+                            <ui-select-match placeholder="选择状态">{{$select.selected.name }}</ui-select-match>
+                            <ui-select-choices repeat="state in videoStateList | filter: $select.search">
+                                <span ng-bind-html="state.name | highlight: $select.search"></span>
                             </ui-select-choices>
                         </ui-select>
                     </div>
@@ -101,6 +116,22 @@
                     <label class="col-sm-2 control-label">直播源:</label>
                     <div class="col-sm-3">
                         <input  ng-model="video.videoUrl" name="videoUrl" class="form-control" type="text" required>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">用户名:</label>
+                    <div class="col-sm-3">
+                        <input ng-model="video.videoUser" name="videoUser" class="form-control" type="text" required>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">密码:</label>
+                    <div class="col-sm-3">
+                        <input ng-model="video.videoPwd" name="videoPwd" class="form-control" type="text" required>
                     </div>
                 </div>
             </fieldset>

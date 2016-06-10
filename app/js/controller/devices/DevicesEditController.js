@@ -20,9 +20,11 @@ App.controller("DevicesEditController",['$rootScope','$scope','$filter','$http',
         $scope.editPic = !$scope.editPic;
     };
 
-    $scope.videoType={};
-    $scope.videoTypeList=[{id:0,name:'基础设备'},{id:1,name:'自定义设备'}];
+    //$scope.videoType={};
+    //$scope.videoTypeList=[{id:0,name:'基础设备'},{id:1,name:'自定义设备'}];
 
+    $scope.videoState={};
+    $scope.videoStateList=[{id:1,name:'开启'},{id:2,name:'关闭'}];
 
     $scope.getDeviceById= function(){
         if($scope.dId){
@@ -40,7 +42,8 @@ App.controller("DevicesEditController",['$rootScope','$scope','$filter','$http',
                     function (response) {
                         if (response && response.code == 0) {
                             $scope.video = response.list[0];
-                            $scope.videoType.selected=$filter('filter')($scope.videoTypeList,{id:$scope.video.videoType})[0];
+                            //$scope.videoType.selected=$filter('filter')($scope.videoTypeList,{id:$scope.video.videoType})[0];
+                        $scope.videoState.selected = $filter('filter')($scope.videoStateList,{id:$scope.video.videoState})[0];
                             $scope.isLoading = false;
                         }
                         else if (response && response.code != 0) {
@@ -65,7 +68,9 @@ App.controller("DevicesEditController",['$rootScope','$scope','$filter','$http',
     $scope.saveVideo=function(){
         if($scope.addForm.$valid){
             $scope.isLoading =true;
-            $scope.video.videoType = $scope.videoType.selected.id;
+            //$scope.video.videoType = $scope.videoType.selected.id;
+            $scope.video.videoState = $scope.videoState.selected.id;
+
             $http({
                 headers: {token: $rootScope.loginUser.token},
                 method: 'POST',

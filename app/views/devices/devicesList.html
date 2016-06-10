@@ -10,22 +10,22 @@
                         <tr>
                             <th class="text-center" style="white-space: nowrap">#序号</th>
                             <th class="text-center">设备名称</th>
-                            <th class="text-center">设备类型</th>
+                            <!--<th class="text-center">设备类型</th>-->
                             <th class="text-center">设备描述</th>
                             <th class="text-center">直播图片</th>
                             <th class="text-center">设备状态</th>
-                            <th class="text-center">直播源</th>
+                            <!--<th class="text-center">直播源</th>-->
                         </tr>
                         </thead>
                         <tbody>
                         <tr ng-repeat="video in videoList">
                             <td>{{$index + pageStartNum}}</td>
                             <td>{{ video.videoName }}</td>
-                            <td>{{video.videoType?'自定义设备':'基础设备'}}</td>
+                            <!--<td>{{video.videoType?'自定义设备':'基础设备'}}</td>-->
                             <td>{{ video.videoDesc }}</td>
                             <td><a ng-href="{{video.videoPic ? imgUrl + video.videoPic:''}}" target="_blank">直播图片</a></td>
-                            <td>{{ video.videoState?'正常':'无效' }}</td>
-                            <td><a ng-href="{{video.videoUrl ? video.videoUrl:''}}" target="_blank">直播源</a></td>
+                            <td>{{ video.videoState==1?'开启':'关闭' }}</td>
+                            <!--<td><a ng-href="{{video.videoUrl ? video.videoUrl:''}}" target="_blank">直播源</a></td>-->
                             <td style="white-space: nowrap">
                                 <div class="buttons">
                                     <button type="button" ng-click="editDevice(video.videoId)" title="编辑" class="btn btn-sm btn-info">
