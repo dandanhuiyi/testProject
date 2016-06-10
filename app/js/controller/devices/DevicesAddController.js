@@ -14,10 +14,38 @@ App.controller("DevicesAddController",['$rootScope','$scope','$filter','$http','
     //$scope.videoType={};
     //$scope.videoTypeList=[{id:0,name:'基础设备'},{id:1,name:'自定义设备'}];
 
+    $scope.class={};
+    $scope.classList=[];
+    $scope.getClass=function(){
+        $http({
+            headers: {token: $rootScope.loginUser.token},
+            method: 'POST',
+            url: $rootScope.serviceUrl+'/classList',
+            params: {
+                adminId: $rootScope.loginUser.adminId
+            }
+        })
+            .success(
+                function (response) {
+                    if (response && response.code == 0) {
+                        $scope.classList = response.list;
+                    }
+                    else if (response && response.code != 0) {
+                        alert($rootScope.getErMsge(response.code));
+                        $scope.isLoading = false;
+                        $state.go("login");
+                    }
+                })
+            .error(
+                function (e) {
+                    //alert('班级信息获取失败.');
+                });
+    };
+
     $scope.saveVideo=function(){
       if($scope.addForm.$valid){
           $scope.isLoading =true;
-          //$scope.video.videoType = $scope.videoType.selected.id;
+          $scope.video.classId = $scope.class.selected.classId;
           $http({
               headers: {token: $rootScope.loginUser.token},
               method: 'POST',
@@ -48,6 +76,7 @@ App.controller("DevicesAddController",['$rootScope','$scope','$filter','$http','
       }
     };
 
+    $scope.getClass();
 
 
 
